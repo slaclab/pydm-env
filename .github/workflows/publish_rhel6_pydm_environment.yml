@@ -1,0 +1,25 @@
+name: Publish release
+
+on:  
+  push:
+    tags:
+      - '*'
+      
+jobs:
+  build:
+    env:
+      ENVIRONMENT_NAME: pydm-env
+      ENVIRONMENT_FILE_PATH: environment.yml
+    runs-on: ubuntu-latest
+    name: Build environment
+    steps:
+      - name: Build environment
+        uses: jbellister-slac/lcls-rhel6-conda-pack@6b0b0a01c4c67cc0275ea7bedf9e9d51ae54c9c1
+      - name: Upload artifact to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.ENVIRONMENT_NAME }}.tar.gz
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
