@@ -1,0 +1,9 @@
+name: pydm-env
+channels:
+  - conda-forge
+dependencies:
+  - p4p
+  - pydm
+  - python=3.8
+  - pip:
+    - git+https://github.com/slaclab/edmbutton
