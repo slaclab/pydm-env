@@ -3,7 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - p4p
-  - pydm=1.18.2
-  - python=3.8
+  - pydm=1.21.0
+  - python=3.9
   - pip:
     - git+https://github.com/slaclab/edmbutton
